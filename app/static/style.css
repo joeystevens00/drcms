@@ -17,3 +17,19 @@ button {
 input[value=Save] {
 width:100%;
 }
+
+
+#error, #success {
+margin: 10px 0px;
+padding:12px;
+}
+
+#error { 
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+
+#success { 
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
