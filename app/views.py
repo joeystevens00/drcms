@@ -9,7 +9,7 @@ import os
 def index():
 
     #Setup vars
-    dir='/home/zen/dev/web/asciidoctor-auto-run/adoc/'
+    dir='/path/to/asciidoctor-auto-run/adoc/'
     #These don't need editing
     f=""
     req=""
