@@ -10,6 +10,7 @@
 
 			<!-- hide the success/failure alerts with a fadeout effect -->
     $(document).ready(function(){
+            $('.tooltip').tooltipster();
      if ($("#success").is(":visible")) {
         setTimeout(function(){
             $("#success").fadeOut(200);
@@ -40,7 +41,7 @@ Which file to edit?
 <!-- filelist contains a list of fil -->
 <form action="/index" method="post" name="file">
   {% for file in filelist %} 
-  <button type="submit" name="submit" value={{ file }}>{{ file }}</button>
+  <button type="submit" name="submit" value={{ file }} class="tooltip" title="Click a file name">{{ file }}</button>
   {% endfor %}
 </form>
 <!-- If the file was succesfully saved display this message -->
@@ -64,7 +65,7 @@ Which file to edit?
 <textarea name="text" id="bigbox">{{ fileContents }}
 </textarea>
 <input type="hidden" name="hidden" value={{ buttonclick }}>
-<input type="submit" name="submit" value="Save" id="SaveButton">
+<input type="submit" name="submit" value="Save" id="SaveButton" class="tooltip" title="Try CTRL+ENTER!">
 </form>
 {% endif %}
 </body>
