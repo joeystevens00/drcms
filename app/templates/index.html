@@ -3,14 +3,13 @@
   <title>{{ title }} - CMS</title> 
     <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
-   <script>
-
-
-			<!-- hide the success/failure alerts with a fadeout effect -->
+   <script>		 <!-- JQEURY -->
     $(document).ready(function(){
-            $('.tooltip').tooltipster();
+<!-- Makes tooltips work -->   
+     $('.tooltip').tooltipster();
+<!-- If the success/error modals are visible then fade it out -->
      if ($("#success").is(":visible")) {
         setTimeout(function(){
             $("#success").fadeOut(200);
@@ -21,6 +20,8 @@
             $("#error").fadeOut(200);
         }, 4000);
      }
+
+<!-- Capture CTRL+ENTER and submit form -->
      $('#bigbox').keydown(function (e) {
 
         if (e.ctrlKey && e.keyCode == 13) {
@@ -29,16 +30,13 @@
      }
      });
 });
-
-
-  </script>
-			<!-- END JQUERY -->
+  </script>		<!-- END JQUERY -->
  </head>
 <body>
 
-<br/>
-Which file to edit?
-<!-- filelist contains a list of fil -->
+Which file to edit? <br/>
+
+<!-- filelist contains a list of files from the directory that is specified in the dir variable -->
 <form action="/index" method="post" name="file">
   {% for file in filelist %} 
   <button type="submit" name="submit" value={{ file }} class="tooltip" title="Click a file name">{{ file }}</button>
