@@ -1,37 +1,54 @@
 <html>
  <head>
   <title>{{ title }} - CMS</title> 
-  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+    <link rel="stylesheet" type="text/css" href="tooltipster/dist/css/tooltipster.bundle.min.css" />
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script>
+    <script type="text/javascript" src="tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+   <script>
+
+
+			<!-- hide the success/failure alerts with a fadeout effect -->
     $(document).ready(function(){
      if ($("#success").is(":visible")) {
         setTimeout(function(){
             $("#success").fadeOut(200);
         }, 4000);
      }
-    });
-    $(document).ready(function(){
      if ($("#error").is(":visible")) {
         setTimeout(function(){
             $("#error").fadeOut(200);
         }, 4000);
      }
-    });
-  </script>
- </head>
+     $('#bigbox').keydown(function (e) {
 
+        if (e.ctrlKey && e.keyCode == 13) {
+           // Ctrl-Enter pressed
+           $( "#SaveButton" ).click()
+     }
+     });
+});
+
+
+  </script>
+			<!-- END JQUERY -->
+ </head>
 <body>
-Which file shall we edit? <br/>
+
+<br/>
+Which file to edit?
+<!-- filelist contains a list of fil -->
 <form action="/index" method="post" name="file">
   {% for file in filelist %} 
   <button type="submit" name="submit" value={{ file }}>{{ file }}</button>
   {% endfor %}
 </form>
+<!-- If the file was succesfully saved display this message -->
 {% if successMessage %}
 <div id="success">Success {{ buttonclick }} saved!</div>
 {% endif %}
 
+<!-- Likely should not happen but if for some reason we lose the filename this error could trigger -->
 {% if emptyFileError %}
 <div id="error">Something went wrong!</div>
 {% endif %}
@@ -44,10 +61,10 @@ Which file shall we edit? <br/>
 </code><br/>
 
 <form action="/index" method="post" name="updatefile">
-<textarea name="text">{{ fileContents }}
+<textarea name="text" id="bigbox">{{ fileContents }}
 </textarea>
 <input type="hidden" name="hidden" value={{ buttonclick }}>
-<input type="submit" name="submit" value="Save">
+<input type="submit" name="submit" value="Save" id="SaveButton">
 </form>
 {% endif %}
 </body>
