@@ -9,7 +9,7 @@ import os
 def index():
 
     #Setup vars
-    dir='/path/to/asciidoctor-auto-run/adoc/'
+    dir='/home/zen/dev/web/asciidoctor-auto-run/adoc/'
     #These don't need editing
     f=""
     req=""
@@ -21,6 +21,7 @@ def index():
     #Value of the textarea
     update=""
     emptyFileError=False
+    successMessage=False
     filelist = os.listdir(dir)	
     if request.method == 'POST':
        #If the save button was clicked
@@ -28,13 +29,16 @@ def index():
              #Keep the text area displayed
              display=True
              filename=request.form.get('hidden', "")
+             req=filename
              #If we do have a filename 
              if filename != "":
                  update=request.form.get('text', "")
                  wf = open(dir+filename, 'w')
                  wf.write(update)
+                 f=update
+                 successMessage=True
              else:
-                 #User probably clicked save with no file open so show them an error
+                 #Probably not possible.. Give them an error
                  emptyFileError=True
         else:
             req=request.form['submit']
@@ -44,5 +48,5 @@ def index():
             update=request.form
     return render_template('index.html', title="Home", filelist=filelist, \
     buttonclick=req, displayTextArea=display, fileContents=f, debug=debug, \
-    emptyFileError=emptyFileError)
+    emptyFileError=emptyFileError, successMessage=successMessage)
 
