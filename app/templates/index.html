@@ -1,0 +1,32 @@
+<html>
+ <head>
+  <title>{{ title }} - CMS</title>
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
+ </head>
+
+<body>
+Which file shall we edit? <br/>
+<form action="/index" method="post" name="file">
+  {% for file in filelist %} 
+  <button type="submit" name="submit" value={{ file }}>{{ file }}</button>
+  {% endfor %}
+</form>
+{% if displayTextArea %}
+<code>
+{{ buttonclick }}
+</code><br/>
+
+<form action="/index" method="post" name="updatefile">
+<textarea name="text">{{ fileContents }}
+{% if emptyFileError %}
+ERROR: Please selct a file 
+{% endif %}
+
+</textarea>
+<input type="hidden" name="hidden" value={{ buttonclick }}>
+<input type="submit" name="submit" value="Save">
+</form>
+{% endif %}
+</body>
+
+</html>
