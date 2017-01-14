@@ -2,7 +2,8 @@
 A simple web text editor used in conjunction with asciidoctor-auto-run to make a basic CMS
 
 ## Requirements
-- Flask
+- Flask 0.12
+- Python 2.7.12
 - [asciidoctor-auto-run](https://github.com/joeystevens00/asciidoctor-auto-run)
 
 ## Config
