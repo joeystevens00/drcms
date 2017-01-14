@@ -9,7 +9,7 @@ from drcmsconfig import *
 
 def index():
     #########DEFAULT variables#######
-    adocdir=''
+    adocdir='/path/to/asciidoctor-auto-run/adoc'
     f=''
     req=''
     display=''
