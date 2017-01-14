@@ -3,13 +3,12 @@ from flask import render_template
 from flask import request
 from flask import flash
 import os
-from drcmsconfig import *
 @app.route('/')
 @app.route('/index',  methods=['GET', 'POST'])
 
 def index():
     #########DEFAULT variables#######
-    adocdir='/path/to/asciidoctor-auto-run/adoc'
+    adocdir='/path/to/asciidoctor-auto-run/adoc/'
     f=''
     req=''
     display=''
